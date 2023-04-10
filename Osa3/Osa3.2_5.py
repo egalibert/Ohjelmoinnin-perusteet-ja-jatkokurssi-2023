@@ -46,11 +46,55 @@ print(f"{tulos}")
 # kumpaan tahansa mahdollisista keskikohdista.
 
 sana = input("Sana:")
-pituus = len(sana)
-keskikohta = 0
-vasen_laita = "*"
-oikea_laita = "*"
+leveys = 30
+raamit = '*' * leveys
 
-print(f"{30 * '*'}")
-keskikohta = (30 - pituus) // 2
-print(vasen_laita + (30 - keskikohta) * " " + )
+if len(sana) % 2 == 0:
+	keskikohta = leveys // 2
+else:
+	keskikohta = leveys // 2 + 1
+
+tulos = f"{raamit}\n*{sana.center(leveys -2 )} * \n{raamit}"
+print(tulos)
+
+# Tee ohjelma, joka kysyy käyttäjältä merkkijonon ja tulostaa sitten
+# kaikki sen ensimmäisestä merkistä alkavat osajonot pituusjärjestyksessä.
+
+jono = input("Anna merkkijono:")
+pituus = len(jono)
+index = 1
+
+while (index <= pituus):
+	print(f"{jono[0:index]}")
+	index += 1
+
+# Tee ohjelma, joka kysyy käyttäjältä merkkijonon ja tulostaa sitten 
+# kaikki sen viimeiseen merkkiin päättyvät osajonot pituusjärjestyksessä.
+
+jono = input("Anna merkkijono:")
+pituus = len(jono)
+index = pituus
+
+while (index > 0):
+	print(f"{jono[0:index]}")
+	index -= 1
+
+# Tee ohjelma, joka kysyy käyttäjältä merkkijonon ja 
+# tulostaa sitten tiedon löytyvätkö vokaalit a, e ja o merkkijonosta.
+
+# Voit olettaa, että merkkijono on syötetty kokonaan pienillä kirjaimilla.
+#  Katso mallia esimerkkitulostuksesta.
+
+jono = input("Anna merkkijono:")
+if ('a' in jono):
+	print("a löytyy")
+else:
+	print("a ei löydy")
+if ('e' in jono):
+	print("e löytyy")
+else:
+	print("e ei löydy")
+if ('o' in jono):
+	print("o löytyy")
+else:
+	print("o ei löydy")
