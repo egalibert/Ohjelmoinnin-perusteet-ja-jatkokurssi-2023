@@ -49,3 +49,37 @@ while (True):
 			summa *= index
 			index -= 1
 	print(f"Luvun {luku} kertoma on {summa}")
+
+# Tee ohjelma, joka tulostaa luvut 1:stä käyttäjän antamaan lukuun. 
+# Luvut on kuitenkin käännetty pareittain ympäri.
+
+luku = int(input("Anna luku:"))
+i = 1
+toinen_luku = 2
+while i <= luku:
+	if (toinen_luku > luku):
+		print(f"{i}")
+	else:
+		print(f"{toinen_luku}")
+		print(f"{i}")
+		toinen_luku += 2
+	i += 2
+
+# Tee ohjelma, joka kysyy käyttäjältä luvun ja 
+# tulostaa sitten lukuja vuorotellen seuraavien esimerkkien mukaisesti.
+
+luku = int(input("Anna luku:"))
+i = 1
+toinen_luku = luku
+index = 0
+printed = 0
+while (True):
+	if (printed != luku):
+		print(f"{i + index}")
+		printed += 1
+	if (printed != luku):
+		print(f"{toinen_luku - index}")
+		printed += 1
+	index += 1
+	if (printed == luku):
+		break
