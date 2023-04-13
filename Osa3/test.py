@@ -60,3 +60,15 @@
 
 # if __name__ == "__main__":
 # 	nelio("ab", 3)
+
+# l = [1,2,3,4]        
+# s = 0                
+# for i in range(1, 3):
+# 	s += l[i] 
+# 	print(f"i on = {l[i]} s on {s}")       
+    
+# print(s)
+
+n = 1.5566               
+t = 1                    
+print(f"Luku: {n:.{t}f}")
