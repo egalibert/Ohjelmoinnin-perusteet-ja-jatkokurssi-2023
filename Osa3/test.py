@@ -69,6 +69,7 @@
     
 # print(s)
 
-n = 1.5566               
-t = 1                    
-print(f"Luku: {n:.{t}f}")
+a = [1,2,3]
+b = a      
+b[0] = 5   
+print(a[0])

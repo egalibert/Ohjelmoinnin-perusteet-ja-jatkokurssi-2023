@@ -89,6 +89,55 @@ if __name__ == "__main__":
 	tulosta(sudoku)
 
 
+
+# Funktio kopioi_ja_lisaa(sudoku: list, rivi_nro: int,
+# sarake_nro: int, luku:int) saa parametreikseen sudokuruudukkoa
+# esittävän kaksiulotteisen listan, rivinumeron, sarakenumeron 
+# sekä luvun väliltä 1–9. Funktio palauttaa parametrina saadusta 
+# sudokuruudukosta kopion, johon on lisätty parametrina saatu 
+# luku parametrina saatuun sijaintiin sijoitettuna. 
+# Funktio ei saa muuttaa parametrina annettua sudokuruudukkoa.
+
+def kopioi_ja_lisaa(sudoku, rivi, sarake, i):
+	uusi_sudoku = [rivi[:]for rivi in sudoku]
+	uusi_sudoku[rivi][sarake] = i
+	return uusi_sudoku
+
+def tulosta(lauta):
+	for rivi_index in range(0, len(lauta)):
+		teksti = ""
+		if rivi_index % 3 == 0 and rivi_index != 0:
+			print()
+		for sarake_index in range(0, len(lauta[rivi_index])):
+			arvo = lauta[rivi_index][sarake_index]
+			if sarake_index % 3 == 0 and sarake_index != 0:
+				teksti += " "
+			teksti += (str(arvo) if arvo != 0 else '_') + " "
+			
+		print(teksti)
+
+if __name__ == "__main__":
+	sudoku  = [
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0]
+	]
+
+	kopio = kopioi_ja_lisaa(sudoku, 0, 0, 2)
+	print("Alkuperäinen:")
+	tulosta(sudoku)
+	print()
+	print("Kopio:")
+	tulosta(kopio)
+
+
+
 # Ristinollaa pelataan 3 x 3 -kokoisella ruudukolla, 
 # johon pelaajat merkitsevät vuorotellen ristin tai nollan. 
 # Pelin voittaa se pelaaja, 
@@ -100,4 +149,36 @@ if __name__ == "__main__":
 # str), jossa sijoitetaan annettu pelinappula annettuihin 
 # koordinaatteihin pelilaudalla. 
 # Koordinaattien arvot ovat väliltä 0..2.
+
+def pelaa_siirto(lauta, x, y ,nappula):
+	if (x <= 2 and x >= 0 and y <= 2 and y >= 0):
+		if (lauta[y][x] == ""):
+			lauta[y][x] = nappula
+			return (True)
+		else:
+			return (False)
+	else:
+		return (False)
+
+if __name__ == "__main__":
+	lauta = [["", "X", ""],
+			 ["", "", ""], 
+			 ["O", "", ""]]
+	print(pelaa_siirto(lauta, 3, 0, "X"))
+	print(lauta)
+
+
+# Kirjoita funktio transponoi(matriisi: list), 
+# joka saa parametrikseen kaksiulotteisen kokonaislukuja 
+# sisältävän taulukon eli matriisin. 
+# Funktio transponoi matriisin eli muuntaa rivit sarakkeiksi ja päinvastoin.
+
+# Voit olettaa, että matriisissa on yhtä monta riviä kuin sarakettakin 
+# (eli matriisi on neliömatriisi).
+
+def transponoi(matriisi):
+    for i in range(len(matriisi)):
+        for j in range(i, len(matriisi)):
+            matriisi[i][j], matriisi[j][i] = matriisi[j][i], matriisi[i][j]
+
 
