@@ -95,3 +95,61 @@ if __name__ == "__main__":
 	main()
 
 
+# Ohjelma käsittelee kahta CSV-muotoista tiedostoa. 
+# Toisessa on tieto opiskelijoista:
+
+# opnro;etunimi;sukunimi
+# 12345678;pekka;peloton
+# 12345687;jaana;javanainen
+# 12345699;liisa;virtanen
+
+# ja toisessa opiskelijoiden viikoittaisesta tehtävien lukumäärästä:
+
+# opnro;v1;v2;v3;v4;v5;v6;v7
+# 12345678;4;1;1;4;5;2;4
+# 12345687;3;5;3;1;5;4;6
+# 12345699;10;2;2;7;10;2;2
+
+# Molempien CSV-tiedostojen ensimmäinen rivi on otsikkorivi, 
+# joka kertoo kunkin kentän sisällön.
+
+# Tee ohjelma, joka kysyy tiedostojen nimet ja tämän j
+# älkeen tulostaa kunkin opiskelijan tehtävien yhteenlasketun määrän. 
+# Ohjelma toimii seuraavasti, kun tiedostojen sisältö on yllä oleva:
+
+
+nimet = {}
+
+with open(input("Opiskelijatiedot:")) as tiedosto:
+# with open("opiskelijat1.csv") as tiedosto:
+	for rivi in tiedosto:
+		osat = rivi.split(';')
+		if osat[0] == "opnro":
+			continue
+		nimet[osat[0]] = f"{osat[1]} {osat[2]}"
+
+kurssit = {}
+
+with open(input("Tehtävätiedot:")) as tiedosto:
+# with open("tehtavat1.csv")as tiedosto:
+	for rivi in tiedosto:
+		tulos = 0
+		i = 1
+		osat = rivi.split(';')
+		if osat[0] == "opnro":
+			continue
+		while (i < len(osat)):
+			tulos += int(osat[i])
+			i += 1
+		kurssit[osat[0]] = tulos
+
+for opnro, nimi in nimet.items():
+    if opnro in kurssit:
+        kurssi = kurssit[opnro]
+        print(nimi.rstrip("\n"), kurssi)
+    else:
+        print(nimi.rstrip("\n"))
+
+
+# Edellinen tehtävä laajenee vielä siten, 
+# että myös opiskelijan koepisteet luetaan CSV-tiedostosta.
