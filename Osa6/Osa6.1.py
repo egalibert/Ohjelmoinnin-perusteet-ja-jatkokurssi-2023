@@ -153,3 +153,23 @@ for opnro, nimi in nimet.items():
 
 # Edellinen tehtävä laajenee vielä siten, 
 # että myös opiskelijan koepisteet luetaan CSV-tiedostosta.
+
+
+# Tee ohjelma, joka pyytää käyttäjää kirjoittamaan
+# rivin englanninkielistä tekstiä. Ohjelma suorittaa tekstille 
+# oikeinkirjoitustarkistuksen ja tulostaa saman tekstin siten, 
+# että kaikki väärin kirjoitetut sanat on ympäröity tähdillä. 
+# Seuraavassa kaksi käyttöesimerkkiä:
+
+with open('wordlist.txt') as f:
+	wordlist = f.read().split()
+text = input('Write text: ')
+words = text.split()
+for i, word in enumerate(words):
+	word = word.lower()
+	if word not in wordlist:
+		words[i] = '*' + word + '*'
+
+output = ' '.join(words)
+
+print(output)
