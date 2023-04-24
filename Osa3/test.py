@@ -69,6 +69,5 @@
     
 # print(s)
 
-s = "hei, kaikki!"
-l = s.split("i")  
-print(l[0]) 
+lst = ["a", "c", "b"]
+print("d".join(lst)) 
