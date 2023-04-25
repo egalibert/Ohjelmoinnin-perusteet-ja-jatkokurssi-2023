@@ -96,16 +96,13 @@ for i in range(len(sana) - 2):
 
 # Toinen esiintymä
 
-sana = input("Sana:")
-merkki = input("Merkki:")
-
 jono = input("Anna merkkijono:")
 merkki = input("Anna osajono:")
 
 eka = jono.find(merkki)
-toka = jono.find(merkki, eka + 1)
+toka = jono.find(merkki, eka + len(merkki))
 
 if toka == -1:
-	print("Osajonoa ei löytynyt toista kertaa.")
+	print("Osajono ei esiinny merkkijonossa kahdesti.")
 else:
 	print(f"Osajonon toinen esiintymä on kohdassa {toka}.")
