@@ -40,3 +40,24 @@ if (sana[1] == sana[-2]):
 	print(f"Toinen ja toiseksi viimeinen kirjain on {sana[1]}")
 else:
 	print("Toinen ja toiseksi viimeinen kirjain eroavat")
+
+# Sanalaatikko
+
+sana = input("Sana: ")
+
+leveys = 30
+sanan_pituus = len(sana)
+keskikohta = leveys // 2
+sanan_keskipiste = sanan_pituus // 2
+vasen_sivu = (keskikohta - len(sana) // 2) - 1
+if (len(sana) % 2 == 0):
+	oikea_sivu = vasen_sivu 
+else:
+	oikea_sivu = vasen_sivu - 1
+
+
+# print(vasen_sivu, oikea_sivu)
+
+print("*" * leveys)
+print("*" + " " * vasen_sivu + sana + " " * oikea_sivu + "*")
+print("*" * leveys)

@@ -83,3 +83,29 @@ while (True):
 	index += 1
 	if (printed == luku):
 		break
+
+# Osajonojen haku
+
+sana = input("Sana:")
+merkki = input("Merkki:")
+
+for i in range(len(sana) - 2):
+    osajono = sana[i:i+3]
+    if osajono[0] == merkki:
+        print(osajono)
+
+# Toinen esiintymä
+
+sana = input("Sana:")
+merkki = input("Merkki:")
+
+jono = input("Anna merkkijono:")
+merkki = input("Anna osajono:")
+
+eka = jono.find(merkki)
+toka = jono.find(merkki, eka + 1)
+
+if toka == -1:
+	print("Osajonoa ei löytynyt toista kertaa.")
+else:
+	print(f"Osajonon toinen esiintymä on kohdassa {toka}.")
