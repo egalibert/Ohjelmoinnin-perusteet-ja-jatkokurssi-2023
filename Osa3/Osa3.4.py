@@ -107,9 +107,21 @@ if __name__ == "__main__":
 # Tee funktio nelio, joka tulostaa 
 # sananeliön alla olevien esimerkkien mukaisesti.
 
-#KESKEN
+def nelio(sana: str, num: int):
+	i = 0
+	y = 0
+	temp = num * num
+	line = 0
+	while (temp != 0):
+		if (i == len(sana)):
+			i = 0
+		if (line == num):
+			print("\n", end="")
+			line = 0
+		print(sana[i], end="")
+		i += 1
+		temp -= 1
+		line += 1
 
-# def nelio(jono, i):
-	
-# if __name__ == "__main__":
-# 	nelio("ab", 3)
+if __name__ == "__main__":
+	nelio("abc", 5)

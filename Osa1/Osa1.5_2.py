@@ -29,7 +29,7 @@ c = float(input("Anna c:"))
 
 diskriminantti = b ** 2  - 4 * a * c
 if diskriminantti > 0:
-	juuri1 = (-b +sqrt(diskriminantti))/(2*a)
+	juuri1 = (-b + sqrt(diskriminantti))/(2*a)
 	juuri2 = (-b - sqrt(diskriminantti))/(2*a)
 
 	print("Juuri 1:", juuri1)

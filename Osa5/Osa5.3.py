@@ -203,3 +203,23 @@ if __name__ == "__main__":
 # eivät merkitse haussa, joten hakusanalla paj pitää löytyä sekä elokuva
 # Tappajahai että elokuva Pajatoiminnan historia.
 
+def etsi_elokuvat(sanakirja: list, sana: str):
+	lista = []
+	sana2 = sana.title()
+	print(sana2)
+	for struct in sanakirja:
+		if sana in struct['nimi']:
+			lista.append(struct)
+		elif sana2 in struct['nimi']:
+			lista.append(struct)
+	return(lista)
+
+if __name__ == "__main__":
+	rekisteri = [{'nimi': 'Linnut', 'ohjaaja': 'Alfred Hitchcock', 'vuosi': 1963, 'pituus': 119},
+	{'nimi': 'Kummisetä', 'ohjaaja': 'Francis Ford Coppola', 'vuosi': 1972, 'pituus': 175}, 
+	{'nimi': 'Tappajahai', 'ohjaaja': 'Steven Spielberg', 'vuosi': 1975, 'pituus': 124}, 
+	{'nimi': 'Star Wars', 'ohjaaja': 'George Lucas', 'vuosi': 1977, 'pituus': 121}]
+
+	lista = etsi_elokuvat(rekisteri, "ta")
+	print(lista)
+
