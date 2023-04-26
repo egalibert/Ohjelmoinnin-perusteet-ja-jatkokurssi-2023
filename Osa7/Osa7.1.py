@@ -45,3 +45,23 @@ if __name__ == "__main__":
 	print(osat[0])
 	print(osat[1])
 	print(osat[2])
+
+
+# Tutustu Pythonin moduuliin fractions ja toteuta sen avulla funktio
+# jaa_palasiksi(maara: int), joka saa parametrikseen palasten määrän. 
+# Funktio jakaa luvun 1 parametrin mukaisesti yhtä suuriin murtolukupalasiin 
+# ja palauttaa nämä palaset listassa.
+
+from fractions import *
+
+def jaa_palasiksi(maara: int):
+	palat = [Fraction(1, maara) for i in range(maara)]
+	return palat
+
+if __name__ == "__main__":
+	for p in jaa_palasiksi(3):
+		print(p)
+
+	print()
+
+	print(jaa_palasiksi(5))

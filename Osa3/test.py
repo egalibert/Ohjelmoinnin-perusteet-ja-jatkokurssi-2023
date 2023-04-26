@@ -69,5 +69,10 @@
     
 # print(s)
 
-lst = ["a", "c", "b"]
-print("d".join(lst)) 
+from random import *
+ 
+i = 0
+while i < 10:
+	luku = randint(1,3)  
+	print(luku)             
+	i += 1           
