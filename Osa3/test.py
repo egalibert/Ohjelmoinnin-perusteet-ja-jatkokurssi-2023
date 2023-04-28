@@ -69,10 +69,8 @@
     
 # print(s)
 
-from random import *
- 
-i = 0
-while i < 10:
-	luku = randint(1,3)  
-	print(luku)             
-	i += 1           
+from datetime import datetime       
+aika1 = datetime(1920, 2, 14, 13, 0)
+aika2 = datetime(1920, 2, 14, 13, 1)
+e = aika2 - aika1                   
+print(e.seconds) 
