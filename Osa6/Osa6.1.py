@@ -154,6 +154,76 @@ for opnro, nimi in nimet.items():
 # Edellinen tehtävä laajenee vielä siten, 
 # että myös opiskelijan koepisteet luetaan CSV-tiedostosta.
 
+nimet = {}
+
+with open(input("Opiskelijatiedot:")) as tiedosto:
+
+# with open("opiskelijat1.csv") as tiedosto:
+	for rivi in tiedosto:
+		osat = rivi.split(';')
+		if osat[0] == "opnro":
+			continue
+		nimet[osat[0]] = f"{osat[1]} {osat[2]}"
+
+kurssit = {}
+
+with open(input("Tehtävätiedot:")) as tiedosto:
+# with open("tehtavat1.csv")as tiedosto:
+	for rivi in tiedosto:
+		tulos = 0
+		i = 1
+		osat = rivi.split(';')
+		if osat[0] == "opnro":
+			continue
+		while (i < len(osat)):
+			tulos += int(osat[i])
+			i += 1
+		kurssit[osat[0]] = tulos
+	
+koepisteet = {}
+
+# with open("koepisteet1.csv")as tiedosto:
+with open(input("Koepisteet:")) as tiedosto:
+	for rivi in tiedosto:
+		tulos = 0
+		i = 1
+		osat = rivi.split(';')
+		if osat[0] == "opnro":
+			continue
+		while (i < len(osat)):
+			tulos += int(osat[i])
+			i += 1
+		koepisteet[osat[0]] = tulos
+
+	# print(koepisteet)
+
+def laske_pisteet(t_pisteet, k_pisteet):
+	i = (t_pisteet / 40 * 100) // 10
+	l_tulos = i + k_pisteet
+	# print (l_tulos)
+	if (l_tulos <= 14):
+		return 0
+	elif (l_tulos <= 17):
+		return (1)
+	elif (l_tulos <= 20):
+		return (2)
+	elif (l_tulos <= 23):
+		return (3)
+	elif (l_tulos <= 27):
+		return (4)
+	else:
+		return (5)
+
+for opnro, nimi in nimet.items():
+	if opnro in kurssit:
+		kurssi = (kurssit[opnro])
+		koe_tulos = (koepisteet[opnro])
+		l_tulos = laske_pisteet(kurssi, koe_tulos)
+		print(nimi.rstrip("\n"), l_tulos)
+	else:
+		print(nimi.rstrip("\n"))
+
+
 
 # Tee ohjelma, joka pyytää käyttäjää kirjoittamaan
 # rivin englanninkielistä tekstiä. Ohjelma suorittaa tekstille 
@@ -173,3 +243,83 @@ for i, word in enumerate(words):
 output = ' '.join(words)
 
 print(output)
+
+
+# Tässä tehtävässä muotoillaan edellisen tehtävän tulostus parempaan muotoon
+# Koepisteet osa3
+
+
+
+# Tässä tehtävässä tehdään ohjelma, 
+# joka tarjoaa käyttäjälle mahdollisuuden reseptien hakuun reseptin nimen, 
+# valmistusajan tai raaka-aineen nimen perusteella. 
+# Ohjelma lukee reseptit käyttäjän antamasta tiedostosta.
+
+def muunna_listaksi(tiedosto):
+	with open(tiedosto, "r") as file:
+		teksti = file.read()
+	rivit = teksti.split("\n")
+
+	reseptit = []
+	uusi_resepti = []
+	for rivi in rivit:
+		if (rivi != ""):
+			uusi_resepti.append(rivi)
+		if (rivi == ""):
+			reseptit.append(uusi_resepti)
+			uusi_resepti = []
+	return(reseptit)
+
+def hae_raakaaine(tiedosto: str, aine: str):
+	reseptit = []
+	reseptit = muunna_listaksi(tiedosto)
+	uusi_lista = []
+	valmis_lista = []
+
+	for resepti in reseptit:
+		for olio in resepti:
+			if (aine.lower() in olio.lower()):
+				uusi_lista.append(resepti)
+	
+	# print(uusi_lista)
+	for resepti in uusi_lista:
+		valmis_lista += ([f"{resepti[0]}, valmistusaika {resepti[1]} min"])
+	return(valmis_lista)
+
+def hae_aika(tiedosto: str, aika: int):
+	reseptit = []
+	reseptit = muunna_listaksi(tiedosto)
+	uusi_lista  = []
+	valmis_lista = []
+	for resepti in reseptit:
+		if (int(resepti[1]) <= aika):
+			uusi_lista.append(resepti)
+	for resepti in uusi_lista:
+		valmis_lista += ([f"{resepti[0]}, valmistusaika {resepti[1]} min"])
+	# print(uusi_lista)
+	return(valmis_lista)
+
+
+def hae_nimi(tiedosto: str, sana: str):
+	reseptit = []
+	reseptit = muunna_listaksi(tiedosto)
+	valitut = []
+	for resepti in reseptit:
+		for olio in resepti:
+			if (sana.lower() in olio.lower()):
+				if (olio == resepti[0]):
+					valitut.append(resepti[0])
+	return(valitut)
+
+
+def main():
+	
+		# loydetyt = hae_nimi("reseptit1.txt", "pullat")
+		# loydetyt = hae_aika("reseptit1.txt", 30)
+		loydetyt = hae_raakaaine("reseptit1.txt", "maito")
+
+		for resepti in loydetyt:
+			print(resepti)
+
+if __name__ == "__main__":
+	main()
