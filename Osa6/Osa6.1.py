@@ -323,3 +323,74 @@ def main():
 
 if __name__ == "__main__":
 	main()
+
+
+# Tässä tehtävässä tehdään muutama funktio, 
+# joiden avulla voidaan tarkastella kaupunkipyörien asemien 
+# sijaintia sisältävää tiedostoa.
+
+import math
+
+def etaisyys(asemat: dict, asema1: str, asema2: str):
+
+	longitude1 = asemat[asema1][0]
+	latitude1 = asemat[asema1][1]
+	longitude2 = asemat[asema2][0]
+	latitude2 = asemat[asema2][1]
+
+	x_kilometreina = (longitude1 - longitude2) * 55.26
+	y_kilometreina = (latitude1 - latitude2) * 111.2
+	etaisyys = math.sqrt(x_kilometreina**2 + y_kilometreina**2)
+	return (etaisyys)
+
+def suurin_etaisyys(asemat: dict):
+
+	tuple = ()
+
+	suurin_etaisyys = 0
+	suurimman_etaisyys_asema1 = None
+	suurimman_etaisyys_asema2 = None
+	
+	for asema1 in asemat:
+		for asema2 in asemat:
+			if asema1 != asema2:
+				distance = etaisyys(asemat, asema1, asema2)
+				if distance > suurin_etaisyys:
+					suurin_etaisyys = distance
+					suurimman_etaisyys_asema1 = asema1
+					suurimman_etaisyys_asema2 = asema2
+	
+	tuple = (suurimman_etaisyys_asema1, suurimman_etaisyys_asema2, suurin_etaisyys)
+	return (tuple)
+
+
+	# tuple = ("Laivasillankatu", "Hietalahdentori", float(1.478708873076181))
+	# return (tuple)
+
+def hae_asematiedot(tiedosto: str):
+	asemat = {}
+	with open(tiedosto, "r") as file:
+		for i, rivi in enumerate(file):
+			if i == 0:
+				continue
+			teksti = rivi.strip().split(';')
+			asema = teksti[3]
+			longi = float(teksti[0])
+			lati = float(teksti[1])
+			asemat[asema] = (longi, lati)
+	
+	print(asemat)
+	return (asemat)
+
+
+def main():
+	asemat = hae_asematiedot('stations1.csv')
+	e = etaisyys(asemat, "Designmuseo", "Hietalahdentori")
+	print(e)
+	e = etaisyys(asemat, "Viiskulma", "Kaivopuisto")
+	print(e)
+	asema1, asema2, suurin = suurin_etaisyys(asemat)
+	print(asema1, asema2, suurin)
+
+if __name__ == "__main__":
+	main()
