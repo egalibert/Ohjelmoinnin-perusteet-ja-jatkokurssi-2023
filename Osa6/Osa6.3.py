@@ -54,3 +54,38 @@ def uusi_henkilo(nimi: str, ika: int) -> tuple:
 # ...jne...
 # Aluksi pitäisi olla siis otsikko viikko x, 
 # ja sen jälkeen seitsemän numeroa väliltä 1...39.
+
+def poista_virheelliset_rivit(tiedostonimi):
+
+	with open(tiedostonimi, 'r') as infile:
+		reader = csv.reader(infile, delimiter=';')
+		rows = [row for row in reader if len(row[1].split(',')) == 7] # Poistetaan rivit, jotka sisältävät enemmän kuin 7 numeroa
+
+	with open(tiedostonimi, 'w', newline='') as outfile:
+		writer = csv.writer(outfile, delimiter=';')
+		for row in rows:
+			writer.writerow(row)
+
+def suodata_virheelliset():
+	with open('lottonumerot.csv', 'r') as csvfile:
+		with open('korjatut_numerot.csv', 'w', newline='') as outfile:
+			writer = csv.writer(outfile, delimiter=';')
+			writer.writerow(['viikko', 'numero1', 'numero2', 'numero3', 'numero4', 'numero5', 'numero6', 'numero7'])
+			reader = csv.reader(csvfile, delimiter=';')
+			for row in reader:
+				if len(row) != 2:
+					continue
+				viikko, numerot_str = row
+				numerot = numerot_str.split(',')
+				if len(numerot) != 7:
+					continue
+				try:
+					numerot = [int(n) for n in numerot]
+				except ValueError:
+					continue
+				if not all(1 <= n <= 39 for n in numerot):
+					continue
+				if len(set(numerot)) != 7:
+					continue
+				writer.writerow([viikko] + numerot)
+	poista_virheelliset_rivit("korjatut_numerot.csv")
