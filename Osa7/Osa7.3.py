@@ -77,7 +77,32 @@ if __name__ == "__main__":
 	main()
 
 
-# Ohjelmassa kirjoitetaan käyttäjän määrittelemään tiedostoon "ruutuaikoja", 
-# eli käyttäjän television, tietokoneen ja mobiililaitteen 
-# ääressä tiettyinä päivinä viettämää aikaa.
 
+# Ohjelmassa kirjoitetaan käyttäjän määrittelemään tiedostoon "ruutuaikoja", eli käyttäjän television, tietokoneen ja mobiililaitteen ääressä tiettyinä päivinä viettämää aikaa.
+
+# Ohjelma toimii seuraavasti:
+
+# Esimerkkitulostus
+# Tiedosto: kesakuun_loppu.txt
+# Aloituspäivä: 24.6.2020
+# Montako päivää: 5
+# Anna ruutuajat kunakin päivänä minuutteina (TV tietokone mobiililaite):
+# Ruutuaika 24.06.2020: 60 120 0
+# Ruutuaika 25.06.2020: 0 0 0
+# Ruutuaika 26.06.2020: 180 0 0
+# Ruutuaika 27.06.2020: 25 240 15
+# Ruutuaika 28.06.2020: 45 90 5
+# Tiedot tallennettu tiedostoon kesakuun_loppu.txt
+# Kunkin päivän riville on siis annettu välilyönnillä eroteltuna kolme minuuttimäärää.
+
+# Ohjelma tallentaa tilaston ruutuajoista tiedostoon kesakuun_loppu.txt, joka näyttää yllä olevalla syötteellä seuraavalta:
+
+# Esimerkkidata
+# Ajanjakso: 24.06.2020-28.06.2020
+# Yht. minuutteja: 780
+# Keskim. minuutteja: 156.0
+# 24.06.2020: 60/120/0
+# 25.06.2020: 0/0/0
+# 26.06.2020: 180/0/0
+# 27.06.2020: 25/240/15
+# 28.06.2020: 45/90/5

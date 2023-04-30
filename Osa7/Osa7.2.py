@@ -107,4 +107,20 @@ if __name__ == "__main__":
 	tulos = pelaa("B", "B", 1000)
 	print(tulos)
 
+# Tehtäväpohjassa on annettu tiedosto sanat.txt, joka sisältää englannin kielen sanoja, yksi sana joka rivillä.
 
+# Kirjoita funktio sanat(n: int, alku: str), joka palauttaa listassa n kappaletta satunnaisia sanoja tiedostosta. Kaikkien palautettujen sanojen tulee alkaa annetulla merkkijonolla.
+
+# Jos funktiota esim. kutsuttaisiin parametreilla sanat(3, "ca"), se voisi palauttaa listassa esim. sanat "cat", "car" ja "carbon". Sama sana ei saa esiintyä listassa kahdesti.
+
+# Jos annetulla merkkijonolla alkavia sanoja ei löydy tarpeeksi annetun kokoisen ryhmän muodostamiseen, funktio tuottaa poikkeuksen ValueError.
+
+# Esimerkki:
+
+# lista = sanat(3, "ca")
+# for sana in lista:
+#     print(sana)
+# Esimerkkitulostus
+# cat
+# car
+# carbon
