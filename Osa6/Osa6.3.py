@@ -55,6 +55,8 @@ def uusi_henkilo(nimi: str, ika: int) -> tuple:
 # Aluksi pitäisi olla siis otsikko viikko x, 
 # ja sen jälkeen seitsemän numeroa väliltä 1...39.
 
+import csv
+
 def poista_virheelliset_rivit(tiedostonimi):
 
 	with open(tiedostonimi, 'r') as infile:
