@@ -124,3 +124,19 @@ if __name__ == "__main__":
 # cat
 # car
 # carbon
+
+import random
+
+def sanat(n: int, alku: str) -> list[str]:
+	with open("sanat.txt", "r") as tiedosto:
+		sanalista = tiedosto.read().splitlines() 
+	sanalista = [sana for sana in sanalista if sana.startswith(alku)] 
+	if len(sanalista) < n:
+		raise ValueError(f"Ei löydy tarpeeksi sanoja, jotka alkavat merkkijonolla '{alku}'")
+	satunnaiset_sanat = random.sample(sanalista, n) 
+	return satunnaiset_sanat
+
+if __name__ == "__main__":
+	lista = sanat(3, "ca")
+	for sana in lista:
+		print(sana)
