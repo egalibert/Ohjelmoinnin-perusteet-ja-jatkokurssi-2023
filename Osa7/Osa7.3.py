@@ -112,28 +112,28 @@ start_date = input("Anna aloituspäivämäärä (pp.kk.vvvv): ")
 num_days = int(input("Anna päivien määrä: "))
 
 with open(filename, "w") as file:
-    file.write("Aloituspäivä: " + start_date + "\n")
-    file.write("Montako päivää: " + str(num_days) + "\n")
-    for i in range(num_days):
-        print("Ruutuaika", start_date + ":", end=" ")
-        tv, computer, mobile = input().split()
-        file.write(start_date + ": " + tv + "/" + computer + "/" + mobile + "\n")
-        start_date = # Lisää päivä yhteenlaskemalla 1 päivä
+	file.write("Aloituspäivä: " + start_date + "\n")
+	file.write("Montako päivää: " + str(num_days) + "\n")
+	for i in range(num_days):
+		print("Ruutuaika", start_date + ":", end=" ")
+		tv, computer, mobile = input().split()
+		file.write(start_date + ": " + tv + "/" + computer + "/" + mobile + "\n")
+		start_date = # Lisää päivä yhteenlaskemalla 1 päivä
 
-with open(filename, "r") as file:
-    lines = file.readlines()
-    start_date = lines[0].split(": ")[1].strip()
-    end_date = # Lisää päiväykseen num_days päivää
-    total_time = 0
-    tv_time, computer_time, mobile_time = 0, 0, 0
-    for line in lines[2:]:
-        day, times = line.strip().split(": ")
-        tv, computer, mobile = map(int, times.split("/"))
-        total_time += tv + computer + mobile
-        tv_time += tv
-        computer_time += computer
-        mobile_time += mobile
-        print(day + ":", times)
-    print("Ajanjakso:", start_date + "-" + end_date)
-    print("Yht. minuutteja:", total_time)
-    print("Keskim. minuutteja:", total_time / num_days)
+	with open(filename, "r") as file:
+		lines = file.readlines()
+		start_date = lines[0].split(": ")[1].strip()
+		end_date = # Lisää päiväykseen num_days päivää
+		total_time = 0
+		tv_time, computer_time, mobile_time = 0, 0, 0
+		for line in lines[2:]:
+			day, times = line.strip().split(": ")
+			tv, computer, mobile = map(int, times.split("/"))
+			total_time += tv + computer + mobile
+			tv_time += tv
+			computer_time += computer
+			mobile_time += mobile
+			print(day + ":", times)
+		print("Ajanjakso:", start_date + "-" + end_date)
+		print("Yht. minuutteja:", total_time)
+		print("Keskim. minuutteja:", total_time / num_days)
