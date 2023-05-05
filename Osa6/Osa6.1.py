@@ -198,6 +198,7 @@ with open(input("Koepisteet:")) as tiedosto:
 	# print(koepisteet)
 
 def laske_pisteet(t_pisteet, k_pisteet):
+
 	i = (t_pisteet / 40 * 100) // 10
 	l_tulos = i + k_pisteet
 	# print (l_tulos)
@@ -214,14 +215,27 @@ def laske_pisteet(t_pisteet, k_pisteet):
 	else:
 		return (5)
 
+
+tulos = []
+tehtavat = []
 for opnro, nimi in nimet.items():
 	if opnro in kurssit:
 		kurssi = (kurssit[opnro])
 		koe_tulos = (koepisteet[opnro])
 		l_tulos = laske_pisteet(kurssi, koe_tulos)
-		print(nimi.rstrip("\n"), l_tulos)
-	else:
-		print(nimi.rstrip("\n"))
+		i = (kurssi / 40 * 100) // 10
+		tehtavat.append(int(i))
+		tulos.append(l_tulos)
+
+# print(koepisteet, kurssit, nimet, tehtavat, tulos)
+print(f"{'nimi':<30}{'teht_lkm':<10}{'teht_pist':<10}{'koe_pist':<10}{'yht_pist':<10}{'arvosana':<10}")
+x = 0
+for key in nimet:
+	nimi_pituus = (len(nimet[key]))
+	# print(f"{nimet[key].rstrip():10} {(int(32) - nimi_pituus) * ' '} {kurssit[key]} {' ' * 7} {tehtavat[x]} {' ' * 7} {koepisteet[key]} {' ' * 7} {tehtavat[x] + int(koepisteet[key])} {' ' * 7} {tulos[x]}")
+	print(f"{nimet[key].rstrip():<30}{kurssit[key]:<10}{tehtavat[x]:<10}{koepisteet[key]:<10}{tehtavat[x] + int(koepisteet[key]):<10}{tulos[x]:<10}")
+
+	x += 1
 
 
 
